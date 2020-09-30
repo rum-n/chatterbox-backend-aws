@@ -30,7 +30,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:cognito-idp:us-east-2:102940630992:userpool/us-east-2_yr0c1zsy4"
+      Resource: "arn:aws:dynamodb:us-east-2:102940630992:table/guests"
 
 functions:
   create:
@@ -90,3 +90,11 @@ functions:
 resources:
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
+  # DynamoDB
+  - ${file(resources/dynamodb-table.yml)}
+  # S3
+  - ${file(resources/s3-bucket.yml)}
+  # Cognito
+  - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}
+
